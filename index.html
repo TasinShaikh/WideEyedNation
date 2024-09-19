@@ -3,105 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WideEyedNation - Pre-Owned Cars</title>
+    <title>SugarWash™ - Pure Sweetness, No Nonsense!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f7f1;
+            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+            background-color: #ffcccb;
             text-align: center;
+            padding: 20px;
+        }
+        header h1 {
+            font-size: 3rem;
+            color: #e74c3c;
+        }
+        header h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            color: #e67e22;
         }
         nav {
-            background-color: #444;
-            padding: 15px;
+            background-color: #f39c12;
             text-align: center;
+            padding: 10px;
         }
         nav a {
             color: #fff;
+            margin: 0 15px;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
+            font-size: 1.2rem;
         }
-        main {
+        nav a:hover {
+            color: #e74c3c;
+        }
+        .container {
             padding: 20px;
             max-width: 1200px;
-            margin: auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .car-listing {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-around;
-        }
-        .car-item {
-            background-color: #eaeaea;
-            padding: 20px;
-            border-radius: 5px;
-            width: 30%;
+            margin: 0 auto;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .car-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
+        .container h3 {
+            color: #e74c3c;
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
-        .car-item h3 {
-            color: #333;
+        .service-desc {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
-        .car-item p {
-            color: #666;
+        .service-desc div {
+            background-color: #ffeaa7;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px;
+            transition: transform 0.3s;
+        }
+        .service-desc div:hover {
+            transform: scale(1.05);
+        }
+        .service-desc img {
+            max-width: 100px;
+            margin-bottom: 15px;
         }
         footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
+            background-color: #e74c3c;
             color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+        footer a {
+            color: #ffeaa7;
+            text-decoration: none;
+        }
+        .coming-soon {
+            background-color: #f39c12;
+            color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 50px;
+        }
+        .coming-soon h2 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .coming-soon p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .coming-soon img {
+            max-width: 200px;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header Section -->
     <header>
-        <h1>Welcome to WideEyedNation</h1>
-        <p>Your trusted marketplace for pre-owned cars</p>
+        <h1>SugarWash™</h1>
+        <h2>Pure Sweetness, No Nonsense!</h2>
     </header>
+
+    <!-- Navigation Section -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#inventory">Inventory</a>
         <a href="#about">About Us</a>
+        <a href="#services">Our Services</a>
         <a href="#contact">Contact</a>
     </nav>
-    <main>
-        <h2>Our Featured Cars</h2>
-        <div class="car-listing">
-            <div class="car-item">
-                <img src="car1.jpg" alt="Car 1">
-                <h3>2018 Toyota Camry</h3>
-                <p>$18,000 | 45,000 miles</p>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Coming Soon Section -->
+        <section class="coming-soon">
+            <h2>Coming Soon!</h2>
+            <p>Get ready to experience the purest sugar ever, with no harmful chemicals!</p>
+            <img src="https://img.icons8.com/emoji/200/000000/sugar-cube.png" alt="Sugar Cube Icon">
+        </section>
+
+        <section id="about">
+            <h3>What is SugarWash™?</h3>
+            <p>At SugarWash™, we believe your sugar deserves the same care and attention as your favorite shirt or car! We're here to give your sugar a thorough cleansing, removing all those sneaky chemicals and making it as pure as it was meant to be!</p>
+        </section>
+
+        <section id="services">
+            <h3>Our Services</h3>
+            <div class="service-desc">
+                <div>
+                    <img src="https://img.icons8.com/emoji/100/000000/candy.png" alt="Candy Icon">
+                    <h4>Deep Sugar Cleanse</h4>
+                    <p>Our machines go to work, scrubbing away every chemical compound so your sugar is left sparkling clean!</p>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/emoji/100/000000/sugar-cube.png" alt="Sugar Cube Icon">
+                    <h4>Chem-Free Sweetness</h4>
+                    <p>No more nasty surprises. Just pure, natural sugar to make your desserts sing with sweetness!</p>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/emoji/100/000000/tea.png" alt="Tea Icon">
+                    <h4>Perfect for Beverages</h4>
+                    <p>Turn your tea, coffee, and lemonade into sweet masterpieces without any of those bad-for-you extras.</p>
+                </div>
             </div>
-            <div class="car-item">
-                <img src="car2.jpg" alt="Car 2">
-                <h3>2017 Honda Accord</h3>
-                <p>$16,500 | 50,000 miles</p>
-            </div>
-            <div class="car-item">
-                <img src="car3.jpg" alt="Car 3">
-                <h3>2019 Ford Mustang</h3>
-                <p>$25,000 | 30,000 miles</p>
-            </div>
-        </div>
-    </main>
+        </section>
+
+        <section id="contact">
+            <h3>Contact Us</h3>
+            <p>Got questions or ready to clean your sugar? Drop us a message!</p>
+            <p><strong>Email:</strong> info@sugarwash.com</p>
+            <p><strong>Phone:</strong> 1-800-SUGAR-WASH</p>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 WideEyedNation. All rights reserved.</p>
+        <p>© 2024 SugarWash™. All rights reserved.</p>
+        <p>Follow us on <a href="#">Instagram</a> | <a href="#">Twitter</a> | <a href="#">Facebook</a></p>
     </footer>
+
 </body>
 </html>

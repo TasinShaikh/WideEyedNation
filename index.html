@@ -8,103 +8,188 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background: linear-gradient(to bottom, #ffec99, #ff6b6b);
+            color: #222;
             text-align: center;
+            overflow-x: hidden;
         }
 
         header {
             background-color: #FF6B6B;
-            padding: 2em;
+            padding: 3em;
             color: #fff;
-            font-size: 2.5em;
+            font-size: 3.5em;
+            text-transform: uppercase;
+            position: relative;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { background-color: #FF6B6B; }
+            50% { background-color: #FF9999; }
+            100% { background-color: #FF6B6B; }
         }
 
         section {
-            margin: 2em auto;
+            margin: 3em auto;
             width: 80%;
-            max-width: 900px;
+            max-width: 1000px;
             background-color: #fff;
-            padding: 2em;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            padding: 3em;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 1.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
         h2 {
             color: #FF6B6B;
+            font-size: 2.5em;
         }
 
         article {
-            margin-bottom: 2em;
+            margin-bottom: 3em;
         }
 
         article h3 {
-            font-size: 1.8em;
+            font-size: 2em;
             margin-bottom: 1em;
+            color: #ff4949;
+            text-shadow: 2px 2px 0 #fff;
+            animation: flicker 2s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
 
         article p {
-            font-size: 1.2em;
-            line-height: 1.6;
+            font-size: 1.3em;
+            line-height: 1.8;
             text-align: left;
-            margin-bottom: 1em;
+            margin-bottom: 1.5em;
+            color: #444;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         footer {
-            margin-top: 3em;
-            padding: 2em;
-            background-color: #FF6B6B;
+            margin-top: 4em;
+            padding: 2.5em;
+            background-color: #ff4949;
             color: #fff;
+            text-transform: uppercase;
+            font-size: 1.2em;
         }
 
-        a {
-            color: #FF6B6B;
+        footer a {
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        footer a:hover {
+            color: #ffec99;
+        }
+
+        .glow-btn {
+            display: inline-block;
+            padding: 1em 2em;
+            font-size: 1.3em;
+            background-color: #ff6b6b;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: background-color 0.4s, box-shadow 0.4s;
+            margin-top: 2em;
+            animation: buttonGlow 2.5s infinite alternate;
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 10px rgba(255, 105, 97, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(255, 105, 97, 1); }
+        }
+
+        .glow-btn:hover {
+            background-color: #ff4949;
+        }
+
+        /* Floating emoji just for fun */
+        .emoji {
+            position: absolute;
+            font-size: 3em;
+            animation: floatUp 10s infinite linear;
+            opacity: 0.6;
+        }
+
+        .emoji:nth-child(1) { top: 20%; left: 10%; }
+        .emoji:nth-child(2) { top: 70%; left: 40%; }
+        .emoji:nth-child(3) { top: 30%; right: 15%; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-1000px); }
         }
     </style>
 </head>
 <body>
 
 <header>
-    Welcome to the Inevitable Truth
+    Welcome to The Inevitable Truth
 </header>
 
 <section>
     <article>
         <h3>LIFE GOES ON... and that's the problem</h3>
         <p>
-            Congratulations. You’ve somehow managed to wake up again today. How long will this miracle of mediocrity last? Life goes on, and so does the perpetual, joyless march toward the inevitable.
-            It's like a train ride—except, there’s no scenic view, the food is cold, and the train never stops. Ever.
+            Well, well, well. You’re back again. Guess life didn’t have the courtesy to end in your sleep. How unfortunate. Life goes on, and that’s precisely where it all goes wrong, doesn’t it? 
         </p>
         <p>
-            Remember that dream you had as a child? Of being something, achieving something? Well, that’s cute. Real cute. But it's time to face reality. You're just one in 8 billion, and the only real guarantee is that the ride will end... eventually.
+            It’s like a never-ending sitcom, except no one’s laughing, and you’re stuck in the worst season. But hey, look on the bright side: one day, it’ll all be over. Or maybe that's the dark side? Who can tell anymore?
         </p>
         <p>
-            So why fight it? Just sit back, relax, and let the crushing weight of existence run its course. Because—spoiler alert—whether you like it or not, it’s happening. You're welcome.
+            So why resist? Accept the inevitability. Keep going—until, inevitably, you won’t.
         </p>
     </article>
 
     <article>
         <h3>SAVE WATER, SAVE EARTH... Get Extinct Today!</h3>
         <p>
-            The Earth has been through a lot. It survived meteors, volcanoes, and now… you. But don’t worry, you’re doing a great job destroying it faster than any natural disaster ever could. Cheers!
+            Water. The elixir of life. Or at least, it was until you showed up. Now it's just something you waste while scrolling mindlessly on your phone. But worry not! The solution to saving Earth is simple: extinction.
         </p>
         <p>
-            You see, the less you consume, the more the Earth "recovers." Isn’t that adorable? Except, let’s be honest—no one’s going to stop. You’re thirsty, right? Sure you are. So drink that extra gallon of water. Go ahead, turn on the tap and let it run, endlessly, while you brush your teeth. We know you will.
+            Imagine the peace the planet would have without you. No more fossil fuels, no more waste, no more… you. What a utopia. So, instead of 'save water,' why not 'save the Earth' the quicker way? Just vanish. It’s eco-friendly and guaranteed to work.
         </p>
         <p>
-            The best way to save Earth? Simple. Just… stop existing. Problem solved. But let’s be real. You won't. We’re doomed, and that’s okay. Because extinction is just nature’s way of saying, “I’ve had enough of your nonsense.” So why not speed up the process? You know, for the good of the planet.
+            Let’s speed up the inevitable, shall we?
         </p>
     </article>
+
+    <a href="#" class="glow-btn">Embrace the Truth</a>
+
+    <!-- Floating sarcastic emojis -->
+    <div class="emoji">😂</div>
+    <div class="emoji">💀</div>
+    <div class="emoji">🙃</div>
+
 </section>
 
 <footer>
-    © 2024 The Inevitable Truth | <a href="#">Terms of Disappointment</a> | <a href="#">Privacy? What's that?</a>
+    © 2024 The Inevitable Truth | <a href="#">Terms of Disappointment</a> | <a href="#">Privacy? Ha!</a>
 </footer>
 
 </body>

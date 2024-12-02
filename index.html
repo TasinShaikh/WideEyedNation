@@ -3,194 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Inevitable Truth</title>
+    <meta name="description" content="AccurateTwilight - Custom hand-drawn art on T-shirts, satchels, pouches, and phone cases. Unique, artistic, and one-of-a-kind creations just for you!">
+    <meta name="keywords" content="AccurateTwilight, custom art, hand-drawn designs, T-shirts, satchels, pouches, phone cases">
+    <meta name="author" content="AccurateTwilight">
+    <title>AccurateTwilight | Custom Artwork Store</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #ffec99, #ff6b6b);
-            color: #222;
-            text-align: center;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+            animation: gradient 10s infinite ease-in-out;
         }
-
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
         header {
-            background-color: #FF6B6B;
-            padding: 3em;
-            color: #fff;
-            font-size: 3.5em;
-            text-transform: uppercase;
-            position: relative;
-            animation: pulse 3s infinite;
+            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            color: white;
         }
-
-        @keyframes pulse {
-            0% { background-color: #FF6B6B; }
-            50% { background-color: #FF9999; }
-            100% { background-color: #FF6B6B; }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
         }
-
-        section {
-            margin: 3em auto;
-            width: 80%;
-            max-width: 1000px;
-            background-color: #fff;
-            padding: 3em;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-            animation: slideIn 1.5s ease-out forwards;
+        header p {
+            margin: 10px 0 20px;
         }
-
-        @keyframes slideIn {
-            0% { transform: translateY(100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: #3a3a3a;
+            padding: 10px 0;
         }
-
-        h2 {
-            color: #FF6B6B;
-            font-size: 2.5em;
-        }
-
-        article {
-            margin-bottom: 3em;
-        }
-
-        article h3 {
-            font-size: 2em;
-            margin-bottom: 1em;
-            color: #ff4949;
-            text-shadow: 2px 2px 0 #fff;
-            animation: flicker 2s infinite alternate;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-
-        article p {
-            font-size: 1.3em;
-            line-height: 1.8;
-            text-align: left;
-            margin-bottom: 1.5em;
-            color: #444;
-            animation: fadeIn 2s ease-in;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        footer {
-            margin-top: 4em;
-            padding: 2.5em;
-            background-color: #ff4949;
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 1.2em;
-        }
-
-        footer a {
-            color: #fff;
+        nav a {
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
-
-        footer a:hover {
-            color: #ffec99;
+        nav a:hover {
+            color: #ff9a9e;
         }
-
-        .glow-btn {
-            display: inline-block;
-            padding: 1em 2em;
-            font-size: 1.3em;
-            background-color: #ff6b6b;
-            color: #fff;
-            text-transform: uppercase;
+        .hero {
+            text-align: center;
+            padding: 40px;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .product h3 {
+            margin: 10px 0;
+        }
+        .product p {
+            font-size: 1rem;
+            margin: 10px 0 20px;
+        }
+        .product button {
+            background: #ff9a9e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product button:hover {
+            background: #fbc2eb;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            color: white;
+            margin-top: 40px;
+        }
+        footer a {
+            color: #ff9a9e;
             text-decoration: none;
-            border-radius: 30px;
-            transition: background-color 0.4s, box-shadow 0.4s;
-            margin-top: 2em;
-            animation: buttonGlow 2.5s infinite alternate;
-        }
-
-        @keyframes buttonGlow {
-            0% { box-shadow: 0 0 10px rgba(255, 105, 97, 0.4); }
-            100% { box-shadow: 0 0 25px rgba(255, 105, 97, 1); }
-        }
-
-        .glow-btn:hover {
-            background-color: #ff4949;
-        }
-
-        /* Floating emoji just for fun */
-        .emoji {
-            position: absolute;
-            font-size: 3em;
-            animation: floatUp 10s infinite linear;
-            opacity: 0.6;
-        }
-
-        .emoji:nth-child(1) { top: 20%; left: 10%; }
-        .emoji:nth-child(2) { top: 70%; left: 40%; }
-        .emoji:nth-child(3) { top: 30%; right: 15%; }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-1000px); }
         }
     </style>
 </head>
 <body>
-
-<header>
-    Welcome to The Inevitable Truth
-</header>
-
-<section>
-    <article>
-        <h3>LIFE GOES ON... and that's the problem</h3>
-        <p>
-            Well, well, well. You’re back again. Guess life didn’t have the courtesy to end in your sleep. How unfortunate. Life goes on, and that’s precisely where it all goes wrong, doesn’t it? 
-        </p>
-        <p>
-            It’s like a never-ending sitcom, except no one’s laughing, and you’re stuck in the worst season. But hey, look on the bright side: one day, it’ll all be over. Or maybe that's the dark side? Who can tell anymore?
-        </p>
-        <p>
-            So why resist? Accept the inevitability. Keep going—until, inevitably, you won’t.
-        </p>
-    </article>
-
-    <article>
-        <h3>SAVE WATER, SAVE EARTH... Get Extinct Today!</h3>
-        <p>
-            Water. The elixir of life. Or at least, it was until you showed up. Now it's just something you waste while scrolling mindlessly on your phone. But worry not! The solution to saving Earth is simple: extinction.
-        </p>
-        <p>
-            Imagine the peace the planet would have without you. No more fossil fuels, no more waste, no more… you. What a utopia. So, instead of 'save water,' why not 'save the Earth' the quicker way? Just vanish. It’s eco-friendly and guaranteed to work.
-        </p>
-        <p>
-            Let’s speed up the inevitable, shall we?
-        </p>
-    </article>
-
-    <a href="#" class="glow-btn">Embrace the Truth</a>
-
-    <!-- Floating sarcastic emojis -->
-    <div class="emoji">😂</div>
-    <div class="emoji">💀</div>
-    <div class="emoji">🙃</div>
-
-</section>
-
-<footer>
-    © 2024 The Inevitable Truth | <a href="#">Terms of Disappointment</a> | <a href="#">Privacy? Ha!</a>
-</footer>
-
+    <header>
+        <h1>AccurateTwilight</h1>
+        <p>Custom Art Creations That Speak Your Style</p>
+    </header>
+    <nav>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section class="hero">
+        <h2>Unleash Your Inner Aesthetic</h2>
+        <p>Get hand-drawn, custom-made art on T-shirts, satchels, pouches, and phone cases. Your style deserves to stand out!</p>
+    </section>
+    <section id="products" class="products">
+        <div class="product">
+            <img src="tshirt.jpg" alt="Custom T-shirt">
+            <h3>Custom T-Shirts</h3>
+            <p>Wear your personality with custom hand-drawn designs on premium-quality T-shirts.</p>
+            <button>Shop Now</button>
+        </div>
+        <div class="product">
+            <img src="satchel.jpg" alt="Custom Satchel">
+            <h3>Artistic Satchels</h3>
+            <p>Carry your essentials in style with our uniquely designed satchels.</p>
+            <button>Shop Now</button>
+        </div>
+        <div class="product">
+            <img src="pouch.jpg" alt="Custom Pouch">
+            <h3>Handcrafted Pouches</h3>
+            <p>Compact and stylish pouches with beautiful, intricate artwork.</p>
+            <button>Shop Now</button>
+        </div>
+        <div class="product">
+            <img src="phonecase.jpg" alt="Custom Phone Case">
+            <h3>Custom Phone Cases</h3>
+            <p>Protect your phone with custom designs that scream personality.</p>
+            <button>Shop Now</button>
+        </div>
+    </section>
+    <section id="about" class="hero">
+        <h2>About AccurateTwilight</h2>
+        <p>Welcome to the world of AccurateTwilight, where art meets utility. Each piece is designed with passion and creativity to ensure you get something truly unique.</p>
+    </section>
+    <section id="contact" class="hero">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:accuratetwilight@art.com">accuratetwilight@art.com</a></p>
+        <p>Follow us on Instagram: <a href="https://instagram.com/accuratetwilight" target="_blank">@accuratetwilight</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2024 AccurateTwilight | Designed with ❤️ for art enthusiasts</p>
+    </footer>
 </body>
 </html>

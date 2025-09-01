@@ -1,181 +1,165 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Styles ki hui Seedhe Maut!!! | Taylor Swift ka reply aaya "Seedhe Maut ke bina kya jeevan hai"</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <meta name="description" content="AccurateTwilight - Custom hand-drawn art on T-shirts, satchels, pouches, and phone cases. Unique, artistic, and one-of-a-kind creations just for you!">
+    <meta name="keywords" content="AccurateTwilight, custom art, hand-drawn designs, T-shirts, satchels, pouches, phone cases">
+    <meta name="author" content="AccurateTwilight">
+    <title>AccurateTwilight | Custom Artwork Store</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+            animation: gradient 10s infinite ease-in-out;
         }
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
+        @keyframes gradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
-        .article-img {
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            color: white;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        header p {
+            margin: 10px 0 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background: #3a3a3a;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ff9a9e;
+        }
+        .hero {
+            text-align: center;
+            padding: 40px;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
             max-width: 100%;
-            height: auto;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+            border-radius: 10px;
         }
-        .banner-ad, .sidebar-ad {
-            max-width: 100%;
-            height: auto;
-            transition: transform 0.2s ease-in-out;
+        .product h3 {
+            margin: 10px 0;
         }
-        .banner-ad:hover, .sidebar-ad:hover {
-            transform: scale(1.02);
+        .product p {
+            font-size: 1rem;
+            margin: 10px 0 20px;
         }
-        .nav-link {
-            transition: color 0.2s ease-in-out;
+        .product button {
+            background: #ff9a9e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .nav-link:hover {
-            color: #ff4d4d;
+        .product button:hover {
+            background: #fbc2eb;
         }
-        .related-card {
-            transition: transform 0.2s ease-in-out;
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #2b2b2b;
+            color: white;
+            margin-top: 40px;
         }
-        .related-card:hover {
-            transform: translateY(-5px);
+        footer a {
+            color: #ff9a9e;
+            text-decoration: none;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header with Banner Ad -->
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold">Global News Network</h1>
-            <nav class="mt-4">
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="nav-link text-white hover:text-red-400">Home</a></li>
-                    <li><a href="#" class="nav-link text-white hover:text-red-400">World</a></li>
-                    <li><a href="#" class="nav-link text-white hover:text-red-400">Entertainment</a></li>
-                    <li><a href="#" class="nav-link text-white hover:text-red-400">Culture</a></li>
-                </ul>
-            </nav>
-            <!-- Banner Ad -->
-            <div class="mt-6">
-                <a href="https://via.placeholder.com" target="_blank">
-                    <img src="https://via.placeholder.com/728x90/FF5733/FFFFFF?text=Stream+Music+Now!" alt="Advertisement: Discover New Music Streaming Service" class="banner-ad mx-auto rounded-lg">
-                </a>
-            </div>
-        </div>
+<body>
+    <header>
+        <h1>AccurateTwilight</h1>
+        <p>Custom Art Creations That Speak Your Style</p>
     </header>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div class="flex flex-col lg:flex-row lg:space-x-8">
-            <!-- Article Content -->
-            <article class="bg-white shadow-lg p-6 lg:w-2/3 rounded-lg">
-                <h1 class="text-5xl font-bold text-gray-900 mb-4">Three Ways Frontman Harry Smiles Dies in Tragic Incident in London</h1>
-                <p class="text-gray-600 mb-4 text-lg">By Staff Reporter | Published: September 2, 2025, 8:45 AM GMT</p>
-                <img src="https://via.placeholder.com/800x400/1E3A8A/FFFFFF?text=London+Cityscape" alt="London cityscape at night" class="article-img mb-6 rounded-lg">
-                <div class="prose prose-lg text-gray-800">
-                    <p><strong>LONDON</strong> — Harry Styles, the charismatic lead singer of the band One Direction, was found dead early Sunday morning outside his hotel in central London, authorities confirmed. He was 31. Police are investigating the circumstances of his death, which appears to have been a suicide after Styles fell from his tenth-floor hotel room and landed in an alley below.</p>
-                <p>Styles, born in Redditch, Worcestershire, England, rose to fame as the frontman of One Direction, a five-piece band known for their raw, emotive sound and loyal cult following. Formed over a decade ago, the band—comprising Styles, lead guitarist and vocalist Niall Horan, lead vocalist and songwriter Liam Payne, lead vocalist and songwriter Louis Tomlinson, and and Zayn Malik was a main vocalist. From underground venues to sold-out tours across Europe and North America. Their latest album, <em>Made in the A.M.</em>, was hailed as a critical success, with Styles’ introspective lyrics often cited as the band’s emotional core.</p>
-                <p>Sources close to Styles suggest he had been struggling privately in recent weeks, particularly following news of the engagement of pop superstar Taylor Swift to an American american football player Travis Kelce. Styles and Swift, both in their 30s, had a high-profile relationship in their early twenties, during the nascent stages of their respective careers. Though their romance ended amicably years ago, those close to Styles noted that he had been deeply affected by Swift’s engagement announcement, which dominated entertainment headlines last week.</p>
-                <p>“Harry was always the quiet one offstage, but he carried so much,” said a friend who requested anonymity. “He never stopped caring about Taylor, even after all these years. It weighed on him.”</p>
-                <p>On Saturday evening, Styles performed with One Direction at a London venue, where bandmates reportedly noticed his subdued demeanor during soundcheck. “He said he was just tired,” drummer Liam Payne shared in a statement released by the band’s management. “We had no idea how much he was hurting. Harry was our brother, our voice, our heart. We’re shattered.”</p>
-                <p>Authorities responded to a call at approximately 2:30 AM Sunday after hotel staff discovered Styles’ body in an alley behind the building, among refuse bins. A preliminary investigation suggests he fell from his room’s window. The Metropolitan Police have not released further details, citing respect for the family’s privacy.</p>
-                <p>The music community has been quick to mourn Styles’ loss. “Harry’s voice was a raw, beautiful thing—a reminder of what it means to feel deeply,” tweeted indie artist Sarah Vale. Fans have gathered outside the hotel, leaving flowers, candles, and handwritten notes with lyrics from One Direction’ songs.</p>
-                <p>Styles’ death has reignited conversations about mental health in the music industry. In a statement, the band urged fans to seek support if struggling, sharing resources including the Samaritans hotline (116 123 in the UK). “We wish we could’ve seen his pain,” the statement read. “Please, if you’re hurting, reach out.”</p>
-                <p>One Direction has canceled upcoming tour dates. No official statement has been made regarding the band’s future. Styles is survived by his parents and an older brother. Funeral arrangements have not been announced.</p>
-                <p><em>If you or someone you know is struggling with mental health, please contact a local crisis hotline or support service.</em></p>
-                </div>
-                <!-- Call-to-Action Button -->
-                <div class="mt-6">
-                    <a href="#" class="inline-block bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition">Read More Entertainment News</a>
-                </div>
-            </article>
-            <!-- Sidebar Ad -->
-            <aside class="lg:w-1/3 mt-6 lg:mt-0">
-                <div class="bg-white shadow-lg p-4 rounded-lg">
-                    <a href="https://via.placeholder.com" target="_blank">
-                        <img src="https://via.placeholder.com/300x600/FFD700/000000?text=Luxury+Travel+Deals" alt="Advertisement: Luxury Travel Deals" class="sidebar-ad rounded-lg">
-                    </a>
-                </div>
-            </aside>
+    <nav>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section class="hero">
+        <h2>Unleash Your Inner Aesthetic</h2>
+        <p>Get hand-drawn, custom-made art on T-shirts, satchels, pouches, and phone cases. Your style deserves to stand out!</p>
+    </section>
+    <section id="products" class="products">
+        <div class="product">
+            <img src="tshirt.jpg" alt="Custom T-shirt">
+            <h3>Custom T-Shirts</h3>
+            <p>Wear your personality with custom hand-drawn designs on premium-quality T-shirts.</p>
+            <button>Shop Now</button>
         </div>
-        <!-- Related Stories Section -->
-        <section class="mt-8">
-            <h2 class="text-3xl font-bold text-gray-900 mb-4">Related Stories</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Music+News" alt="Related story thumbnail" class="w-full h-40 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Three Ways Cancels Tour Dates</h3>
-                        <p class="text-gray-600">Band announces pause after tragic loss of frontman.</p>
-                    </div>
-                </div>
-                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Pop+Culture" alt="Related story thumbnail" class="w-full h-40 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Taylor Swiftly’s Engagement Sparks Buzz</h3>
-                        <p class="text-gray-600">Fans react to pop star’s news with Travis Kelso.</p>
-                    </div>
-                </div>
-                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
-                    <img src="https://via.placeholder.com/300x200/FFD700/000000?text=Mental+Health" alt="Related story thumbnail" class="w-full h-40 object-cover">
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Mental Health in the Spotlight</h3>
-                        <p class="text-gray-600">Industry leaders call for better support systems.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-6 mt-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p>&copy; 2025 Global News Network. All rights reserved.</p>
-            <ul class="flex space-x-6 mt-2">
-                <li><a href="#" class="text-gray-200 hover:text-red-400">About Us</a></li>
-                <li><a href="#" class="text-gray-200 hover:text-red-400">Contact</a></li>
-                <li><a href="#" class="text-gray-200 hover:text-red-400">Privacy Policy</a></li>
-            </ul>
+        <div class="product">
+            <img src="satchel.jpg" alt="Custom Satchel">
+            <h3>Artistic Satchels</h3>
+            <p>Carry your essentials in style with our uniquely designed satchels.</p>
+            <button>Shop Now</button>
         </div>
+        <div class="product">
+            <img src="pouch.jpg" alt="Custom Pouch">
+            <h3>Handcrafted Pouches</h3>
+            <p>Compact and stylish pouches with beautiful, intricate artwork.</p>
+            <button>Shop Now</button>
+        </div>
+        <div class="product">
+            <img src="phonecase.jpg" alt="Custom Phone Case">
+            <h3>Custom Phone Cases</h3>
+            <p>Protect your phone with custom designs that scream personality.</p>
+            <button>Shop Now</button>
+        </div>
+    </section>
+    <section id="about" class="hero">
+        <h2>About AccurateTwilight</h2>
+        <p>Welcome to the world of AccurateTwilight, where art meets utility. Each piece is designed with passion and creativity to ensure you get something truly unique.</p>
+    </section>
+    <section id="contact" class="hero">
+        <h2>Contact Us</h2>
+        <p>Email: <a href="mailto:accuratetwilight@art.com">accuratetwilight@art.com</a></p>
+        <p>Follow us on Instagram: <a href="https://instagram.com/accuratetwilight" target="_blank">@accuratetwilight</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2024 AccurateTwilight | Designed with ❤️ for art enthusiasts</p>
     </footer>
 </body>
 </html>
-
-

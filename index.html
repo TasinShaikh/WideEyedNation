@@ -1,44 +1,116 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Direction Frontman Harry Styles Dies in Tragic Incident in London</title>
+    <title>Three Ways Frontman Harry Smiles Dies in Tragic Incident in London</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
         }
         .article-img {
             max-width: 100%;
             height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+        .banner-ad, .sidebar-ad {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.2s ease-in-out;
+        }
+        .banner-ad:hover, .sidebar-ad:hover {
+            transform: scale(1.02);
+        }
+        .nav-link {
+            transition: color 0.2s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #ff4d4d;
+        }
+        .related-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .related-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Header -->
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-gray-900">Global News Network</h1>
+<body class="bg-gray-50">
+    <!-- Header with Banner Ad -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold">Global News Network</h1>
             <nav class="mt-4">
-                <ul class="flex space-x-4">
-                    <li><a href="#" class="text-blue-600 hover:underline">Home</a></li>
-                    <li><a href="#" class="text-blue-600 hover:underline">World</a></li>
-                    <li><a href="#" class="text-blue-600 hover:underline">Entertainment</a></li>
-                    <li><a href="#" class="text-blue-600 hover:underline">Culture</a></li>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="nav-link text-white hover:text-red-400">Home</a></li>
+                    <li><a href="#" class="nav-link text-white hover:text-red-400">World</a></li>
+                    <li><a href="#" class="nav-link text-white hover:text-red-400">Entertainment</a></li>
+                    <li><a href="#" class="nav-link text-white hover:text-red-400">Culture</a></li>
                 </ul>
             </nav>
+            <!-- Banner Ad -->
+            <div class="mt-6">
+                <a href="https://via.placeholder.com" target="_blank">
+                    <img src="https://via.placeholder.com/728x90/FF5733/FFFFFF?text=Stream+Music+Now!" alt="Advertisement: Discover New Music Streaming Service" class="banner-ad mx-auto rounded-lg">
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-8 bg-white shadow mt-6 sm:px-6 lg:px-8">
-        <article>
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">One Direction Frontman Harry Styles Dies in Tragic Incident in London</h1>
-            <p class="text-gray-600 mb-4">By Staff Reporter | Published: September 2, 2025, 8:45 AM GMT</p>
-            <img src="https://via.placeholder.com/800x400" alt="London cityscape at night" class="article-img mb-6 rounded">
-            <div class="prose prose-lg text-gray-800">
-                <p><strong>LONDON</strong> — Harry Styles, the charismatic lead singer of the band One Direction, was found dead early Sunday morning outside his hotel in central London, authorities confirmed. He was 31. Police are investigating the circumstances of his death, which appears to have been a suicide after Styles fell from his tenth-floor hotel room and landed in an alley below.</p>
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row lg:space-x-8">
+            <!-- Article Content -->
+            <article class="bg-white shadow-lg p-6 lg:w-2/3 rounded-lg">
+                <h1 class="text-5xl font-bold text-gray-900 mb-4">Three Ways Frontman Harry Smiles Dies in Tragic Incident in London</h1>
+                <p class="text-gray-600 mb-4 text-lg">By Staff Reporter | Published: September 2, 2025, 8:45 AM GMT</p>
+                <img src="https://via.placeholder.com/800x400/1E3A8A/FFFFFF?text=London+Cityscape" alt="London cityscape at night" class="article-img mb-6 rounded-lg">
+                <div class="prose prose-lg text-gray-800">
+                    <p><strong>LONDON</strong> — Harry Styles, the charismatic lead singer of the band One Direction, was found dead early Sunday morning outside his hotel in central London, authorities confirmed. He was 31. Police are investigating the circumstances of his death, which appears to have been a suicide after Styles fell from his tenth-floor hotel room and landed in an alley below.</p>
                 <p>Styles, born in Redditch, Worcestershire, England, rose to fame as the frontman of One Direction, a five-piece band known for their raw, emotive sound and loyal cult following. Formed over a decade ago, the band—comprising Styles, lead guitarist and vocalist Niall Horan, lead vocalist and songwriter Liam Payne, lead vocalist and songwriter Louis Tomlinson, and and Zayn Malik was a main vocalist. From underground venues to sold-out tours across Europe and North America. Their latest album, <em>Made in the A.M.</em>, was hailed as a critical success, with Styles’ introspective lyrics often cited as the band’s emotional core.</p>
                 <p>Sources close to Styles suggest he had been struggling privately in recent weeks, particularly following news of the engagement of pop superstar Taylor Swift to an American american football player Travis Kelce. Styles and Swift, both in their 30s, had a high-profile relationship in their early twenties, during the nascent stages of their respective careers. Though their romance ended amicably years ago, those close to Styles noted that he had been deeply affected by Swift’s engagement announcement, which dominated entertainment headlines last week.</p>
                 <p>“Harry was always the quiet one offstage, but he carried so much,” said a friend who requested anonymity. “He never stopped caring about Taylor, even after all these years. It weighed on him.”</p>
@@ -48,18 +120,58 @@
                 <p>Styles’ death has reignited conversations about mental health in the music industry. In a statement, the band urged fans to seek support if struggling, sharing resources including the Samaritans hotline (116 123 in the UK). “We wish we could’ve seen his pain,” the statement read. “Please, if you’re hurting, reach out.”</p>
                 <p>One Direction has canceled upcoming tour dates. No official statement has been made regarding the band’s future. Styles is survived by his parents and an older brother. Funeral arrangements have not been announced.</p>
                 <p><em>If you or someone you know is struggling with mental health, please contact a local crisis hotline or support service.</em></p>
+                </div>
+                <!-- Call-to-Action Button -->
+                <div class="mt-6">
+                    <a href="#" class="inline-block bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition">Read More Entertainment News</a>
+                </div>
+            </article>
+            <!-- Sidebar Ad -->
+            <aside class="lg:w-1/3 mt-6 lg:mt-0">
+                <div class="bg-white shadow-lg p-4 rounded-lg">
+                    <a href="https://via.placeholder.com" target="_blank">
+                        <img src="https://via.placeholder.com/300x600/FFD700/000000?text=Luxury+Travel+Deals" alt="Advertisement: Luxury Travel Deals" class="sidebar-ad rounded-lg">
+                    </a>
+                </div>
+            </aside>
+        </div>
+        <!-- Related Stories Section -->
+        <section class="mt-8">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Related Stories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200/1E3A8A/FFFFFF?text=Music+News" alt="Related story thumbnail" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Three Ways Cancels Tour Dates</h3>
+                        <p class="text-gray-600">Band announces pause after tragic loss of frontman.</p>
+                    </div>
+                </div>
+                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200/FF5733/FFFFFF?text=Pop+Culture" alt="Related story thumbnail" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Taylor Swiftly’s Engagement Sparks Buzz</h3>
+                        <p class="text-gray-600">Fans react to pop star’s news with Travis Kelso.</p>
+                    </div>
+                </div>
+                <div class="related-card bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://via.placeholder.com/300x200/FFD700/000000?text=Mental+Health" alt="Related story thumbnail" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold">Mental Health in the Spotlight</h3>
+                        <p class="text-gray-600">Industry leaders call for better support systems.</p>
+                    </div>
+                </div>
             </div>
-        </article>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-6 mt-6">
+    <footer class="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-6 mt-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <p>&copy; 2025 Global News Network. All rights reserved.</p>
-            <ul class="flex space-x-4 mt-2">
-                <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+            <ul class="flex space-x-6 mt-2">
+                <li><a href="#" class="text-gray-200 hover:text-red-400">About Us</a></li>
+                <li><a href="#" class="text-gray-200 hover:text-red-400">Contact</a></li>
+                <li><a href="#" class="text-gray-200 hover:text-red-400">Privacy Policy</a></li>
             </ul>
         </div>
     </footer>

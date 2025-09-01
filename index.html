@@ -1,165 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AccurateTwilight - Custom hand-drawn art on T-shirts, satchels, pouches, and phone cases. Unique, artistic, and one-of-a-kind creations just for you!">
-    <meta name="keywords" content="AccurateTwilight, custom art, hand-drawn designs, T-shirts, satchels, pouches, phone cases">
-    <meta name="author" content="AccurateTwilight">
-    <title>AccurateTwilight | Custom Artwork Store</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
-            animation: gradient 10s infinite ease-in-out;
-        }
-        @keyframes gradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background: #2b2b2b;
-            color: white;
-        }
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        header p {
-            margin: 10px 0 20px;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            background: #3a3a3a;
-            padding: 10px 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ff9a9e;
-        }
-        .hero {
-            text-align: center;
-            padding: 40px;
-        }
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-        .products {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-        }
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .product img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        .product h3 {
-            margin: 10px 0;
-        }
-        .product p {
-            font-size: 1rem;
-            margin: 10px 0 20px;
-        }
-        .product button {
-            background: #ff9a9e;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .product button:hover {
-            background: #fbc2eb;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: #2b2b2b;
-            color: white;
-            margin-top: 40px;
-        }
-        footer a {
-            color: #ff9a9e;
-            text-decoration: none;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, nosnippet" />
+  <title>Daily Ledger | Culture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0b0f19;
+      --muted: #6b7280;
+      --bg: #ffffff;
+      --border: #e5e7eb;
+      --accent: #111827;
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .container { max-width: 920px; margin: 0 auto; padding: 24px; }
+    .masthead { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); padding-bottom:14px; margin-bottom:24px; }
+    .brand { font-weight: 800; letter-spacing: 0.5px; font-size: 24px; }
+    .nav a { color: var(--muted); margin-left: 14px; text-decoration: none; font-weight: 500; }
+    .label-satire {
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid #f59e0b; color:#92400e; background:#fffbeb; border-radius:999px; font-size:12px; font-weight:600;
+    }
+    .hero { display:grid; grid-template-columns: 1fr; gap: 18px; }
+    .headline { font-size: 38px; line-height: 1.1; letter-spacing:-0.02em; margin: 0; }
+    .dek { font-size: 18px; color: var(--muted); margin-top: 10px; }
+    .byline { display:flex; align-items:center; gap:12px; color: var(--muted); font-size: 14px; margin-top: 12px; }
+    .article { margin-top: 24px; font-size: 18px; line-height: 1.7; }
+    .article p { margin: 1em 0; }
+    .pullquote { border-left: 4px solid var(--accent); padding-left: 16px; font-style: italic; margin: 24px 0; }
+    .figure { border:1px solid var(--border); border-radius: 12px; overflow:hidden; margin: 18px 0; }
+    .figure img { width:100%; height:auto; display:block; }
+    .figcaption { font-size: 13px; color: var(--muted); padding: 8px 12px; border-top:1px solid var(--border); background:#fafafa; }
+    .separator { height:1px; background: var(--border); margin: 28px 0; }
+    .share { display:flex; gap:10px; }
+    .share button { border:1px solid var(--border); background:#fff; padding:10px 14px; border-radius:10px; font-weight:600; cursor:not-allowed; color:var(--muted); }
+    .disclaimer { margin-top: 24px; padding: 14px 16px; border:1px dashed #9ca3af; border-radius:12px; background:#f9fafb; color:#374151; font-size:14px; }
+    .footer { color: var(--muted); font-size: 13px; border-top:1px solid var(--border); margin-top:36px; padding-top:16px; }
+    @media (min-width: 900px) {
+      .hero { grid-template-columns: 2fr 1fr; align-items:start; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>AccurateTwilight</h1>
-        <p>Custom Art Creations That Speak Your Style</p>
+  <div class="container">
+    <header class="masthead">
+      <div class="brand">Daily Ledger</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#">News</a>
+        <a href="#">Business</a>
+        <a href="#">Culture</a>
+        <a href="#">Tech</a>
+      </nav>
     </header>
-    <nav>
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+
+    <div class="label-satire" role="note" aria-live="polite" title="This is a parody page for private, harmless fun.">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Satire/Parody – not real news. Do not share as factual information.
+    </div>
+
     <section class="hero">
-        <h2>Unleash Your Inner Aesthetic</h2>
-        <p>Get hand-drawn, custom-made art on T-shirts, satchels, pouches, and phone cases. Your style deserves to stand out!</p>
-    </section>
-    <section id="products" class="products">
-        <div class="product">
-            <img src="tshirt.jpg" alt="Custom T-shirt">
-            <h3>Custom T-Shirts</h3>
-            <p>Wear your personality with custom hand-drawn designs on premium-quality T-shirts.</p>
-            <button>Shop Now</button>
+      <div>
+        <h1 class="headline">Exclusive: <span id="starName">Harry Smiles</span> secretly launches a surprise micro-venue tour inside coffee shops worldwide</h1>
+        <p class="dek">The pop icon’s team teases “Project Latte,” a whimsical series of 7‑minute acoustic sets that appear without notice, rewarding fans for kindness rather than queueing.</p>
+        <div class="byline">
+          <span>By Jordan Avery</span>
+          <span>•</span>
+          <time datetime="2025-09-01">September 1, 2025</time>
+          <span>•</span>
+          <span>Culture Desk</span>
         </div>
-        <div class="product">
-            <img src="satchel.jpg" alt="Custom Satchel">
-            <h3>Artistic Satchels</h3>
-            <p>Carry your essentials in style with our uniquely designed satchels.</p>
-            <button>Shop Now</button>
-        </div>
-        <div class="product">
-            <img src="pouch.jpg" alt="Custom Pouch">
-            <h3>Handcrafted Pouches</h3>
-            <p>Compact and stylish pouches with beautiful, intricate artwork.</p>
-            <button>Shop Now</button>
-        </div>
-        <div class="product">
-            <img src="phonecase.jpg" alt="Custom Phone Case">
-            <h3>Custom Phone Cases</h3>
-            <p>Protect your phone with custom designs that scream personality.</p>
-            <button>Shop Now</button>
-        </div>
+      </div>
+      <figure class="figure">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop" alt="A moody stage light over a microphone in a small café" />
+        <figcaption class="figcaption">Leaked teaser image from the tour’s production notes, according to over-caffeinated insiders.</figcaption>
+      </figure>
     </section>
-    <section id="about" class="hero">
-        <h2>About AccurateTwilight</h2>
-        <p>Welcome to the world of AccurateTwilight, where art meets utility. Each piece is designed with passion and creativity to ensure you get something truly unique.</p>
+
+    <article class="article" aria-label="Story body">
+      <p>In a move that feels equal parts secret handshake and social experiment, global pop favorite <strong id="starNameInline">Harry Smiles</strong> is said to be rolling out <em>Project Latte</em>: blink‑and‑you‑miss‑it acoustic sets performed in independent cafés around the world. Instead of posting tour dates, the team will allegedly drop cryptic latte‑art hints on a private webpage minutes before each appearance.</p>
+
+      <p>According to two people familiar with the planning (who requested anonymity because they enjoy drama), the mini‑sets will last exactly seven minutes, featuring deep‑cut fan requests, a cover of a classic 1D‑era B‑side, and a rotating duet with a local barista who can hold a tune. Entry is free, but there’s a twist: fans who pay forward a drink for a stranger are “bumped” to the front. No merch tables—only napkins sporting coordinates that may or may not be real.</p>
+
+      <div class="pullquote">“It’s about making a <em>small</em> room feel gigantic,” said one production source. “If you know, you know.”</div>
+
+      <p>Mockups reviewed by <em>Daily Ledger</em> show minimalist staging—one vintage mic, one stool, a polaroid camera—and a tiny lighting rig disguised as café décor. Security, we’re told, is more concerned with protecting the espresso machine than enforcing any velvet rope. After the final chord, the singer allegedly scribbles a lyric on a loyalty card and vanishes out a side door like steam from a milk wand.</p>
+
+      <p>Fans have already begun decoding latte‑art clues that surfaced on a dormant fan club page last week. A tulip pattern paired with a compass emoji appears to indicate a debut somewhere along the Prime Meridian. Meanwhile, a caramel‑drizzle spiral has sleuths pointing suspiciously at coastal cities with strong third‑wave scenes.</p>
+
+      <p>The team hasn’t publicly confirmed the project, but posters in several barista forums seem to be <em>frothing</em> over NDA‑ish chatter. If verified, <em>Project Latte</em> could be the year’s most endearing pop spectacle—one that rewards generosity as much as geography.</p>
+
+      <p><strong>Bottom line:</strong> Pack your patience, tip your barista, and keep an eye on that foam.</p>
+    </article>
+
+    <div class="separator"></div>
+
+    <section aria-label="Share buttons" class="share">
+      <button title="Share disabled for parody">Share</button>
+      <button title="Commenting disabled for parody">Comment</button>
+      <button title="Save disabled for parody">Save</button>
     </section>
-    <section id="contact" class="hero">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:accuratetwilight@art.com">accuratetwilight@art.com</a></p>
-        <p>Follow us on Instagram: <a href="https://instagram.com/accuratetwilight" target="_blank">@accuratetwilight</a></p>
-    </section>
-    <footer>
-        <p>&copy; 2024 AccurateTwilight | Designed with ❤️ for art enthusiasts</p>
+
+    <div class="disclaimer" role="note">
+      This page is a private parody built for a safe, harmless prank. It intentionally avoids defamation, harm, or misinformation about real people. Names used here (<em>Harry Smiles</em>) are fictional. Please do not present this as real news.
+    </div>
+
+    <footer class="footer">
+      © 2025 Daily Ledger. Fictional publication for satire purposes only.
     </footer>
+  </div>
+
+  <script>
+    // Quick toggle to swap to a different fictional name if you prefer.
+    // Keep it fictional to avoid spreading misinformation.
+    const params = new URLSearchParams(location.search);
+    const alias = params.get('alias');
+    if (alias) {
+      document.getElementById('starName').textContent = alias;
+      document.getElementById('starNameInline').textContent = alias;
+    }
+  </script>
 </body>
 </html>
